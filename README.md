@@ -25,18 +25,35 @@ Once your application has been approved, you will be sent a invitation message t
 <p>Call a <strong>POST request</strong> to this api:<br>
 https://chatapi.viber.com/pa/set_webhook<br>
 Post Parameters:</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="json" style="display: none;">{
+<pre class="EnlighterJSRAW" data-enlighter-language="json" style="display: none;">
+
+```
+{
   "auth_token": "455a0f2c05b4fe54-cb4e33d3200fbbae-95f29ebc06af09a8",
   "url": "https://mysite.com/webhook_page",
   "event_types": ["delivered", "seen"]
-}</pre><div class="EnlighterJSWrapper enlighterEnlighterJSWrapper"><ol class="hoverEnabled enlighterEnlighterJS EnlighterJS"><li class=" odd"><span class="br0">{</span><span class=""></span></li><li class=" even"><span class="">  </span><span class="kw1">"auth_token"</span><span class="sy0">:</span><span class=""> </span><span class="st0">"455a0f2c05b4fe54-cb4e33d3200fbbae-95f29ebc06af09a8"</span><span class="sy0">,</span><span class=""></span></li><li class=" odd"><span class="">  </span><span class="st0">"url"</span><span class="sy0">:</span><span class=""> </span><span class="st0">"https://mysite.com/webhook_page"</span><span class="sy0">,</span><span class=""></span></li><li class=" even"><span class="">  </span><span class="kw1">"event_types"</span><span class="sy0">:</span><span class=""> </span><span class="br0">[</span><span class="st0">"delivered"</span><span class="sy0">,</span><span class=""> </span><span class="st0">"seen"</span><span class="br0">]</span><span class=""></span></li><li class=" odd"><span class=""></span><span class="br0">}</span></li></ol><pre style="display: none;">{
+}
+
+```
+</pre><div class="EnlighterJSWrapper enlighterEnlighterJSWrapper"><ol class="hoverEnabled enlighterEnlighterJS EnlighterJS"><li class=" odd"><span class="br0">{</span><span class=""></span></li><li class=" even"><span class="">  </span><span class="kw1">"auth_token"</span><span class="sy0">:</span><span class=""> </span><span class="st0">"455a0f2c05b4fe54-cb4e33d3200fbbae-95f29ebc06af09a8"</span><span class="sy0">,</span><span class=""></span></li><li class=" odd"><span class="">  </span><span class="st0">"url"</span><span class="sy0">:</span><span class=""> </span><span class="st0">"https://mysite.com/webhook_page"</span><span class="sy0">,</span><span class=""></span></li><li class=" even"><span class="">  </span><span class="kw1">"event_types"</span><span class="sy0">:</span><span class=""> </span><span class="br0">[</span><span class="st0">"delivered"</span><span class="sy0">,</span><span class=""> </span><span class="st0">"seen"</span><span class="br0">]</span><span class=""></span></li><li class=" odd"><span class=""></span><span class="br0">}</span></li></ol><pre style="display: none;">
+
+```
+
+{
   "auth_token": "455a0f2c05b4fe54-cb4e33d3200fbbae-95f29ebc06af09a8",
   "url": "https://mysite.com/webhook_page",
   "event_types": ["delivered", "seen"]
-}</pre><div class="EnlighterJSToolbar"><a class="EnlighterJSInfoButton" title="EnlighterJS Syntax Highlighter"></a><a class="EnlighterJSRawButton" title="Toggle RAW Code"></a><a class="EnlighterJSWindowButton" title="Open Code in new Window"></a><span class="clear"></span></div></div>
+}
+
+
+```
+</pre><div class="EnlighterJSToolbar"><a class="EnlighterJSInfoButton" title="EnlighterJS Syntax Highlighter"></a><a class="EnlighterJSRawButton" title="Toggle RAW Code"></a><a class="EnlighterJSWindowButton" title="Open Code in new Window"></a><span class="clear"></span></div></div>
 <p><em>auth_token</em> = The token string provided by Viber on PA creation.<br><em>url</em> = PA webhook URL to receive callbacks &amp; messages from users (must use SSL i.e. https)<br><em>event_type</em> = (optional) Indicates the types of Viber events that the PA owner would like to be notified about. Default values: [“delivered”, “seen”]</p>
 <p>In order to make POST request to <em>set_webhook API</em>, we can use cURL or tools like POSTMAN. Here’s the sample PHP code:</p>
-<pre class="EnlighterJSRAW" data-enlighter-language="php" style="display: none;">&lt;?php
+<pre class="EnlighterJSRAW" data-enlighter-language="php" style="display: none;">
+
+```
+<?php
 
 $url = 'https://chatapi.viber.com/pa/set_webhook';
 
@@ -49,7 +66,12 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 $result = curl_exec($ch);
 curl_close($ch);
 
-?&gt;</pre><div class="EnlighterJSWrapper enlighterEnlighterJSWrapper"><ol class="hoverEnabled enlighterEnlighterJS EnlighterJS"><li class=" odd"><span class="de1">&lt;?php</span><span class=""></span></li><li class=" even"><span class=""></span></li><li class=" odd"><span class=""></span><span class="kw3">$url</span><span class=""> </span><span class="sy0">=</span><span class=""> </span><span class="st1">'https://chatapi.viber.com/pa/set_webhook'</span><span class="">;</span></li><li class=" even"><span class=""></span></li><li class=" odd"><span class=""></span><span class="kw3">$jsonData</span><span class="sy0">=</span><span class="st1">'{ "auth_token": "your_auth_token", "url": "https://yoursite.com/webhook_page" }'</span><span class="">;</span></li><li class=" even"><span class=""></span></li><li class=" odd"><span class=""></span><span class="kw3">$ch</span><span class=""> </span><span class="sy0">=</span><span class=""> </span><span class="me0">curl_init</span><span class="br0">(</span><span class="kw3">$url</span><span class="br0">)</span><span class="">;</span></li><li class=" even"><span class=""></span><span class="me0">curl_setopt</span><span class="br0">(</span><span class="kw3">$ch</span><span class="">, </span><span class="kw4">CURLOPT_POST</span><span class="">, </span><span class="nu0">1</span><span class="br0">)</span><span class="">;</span></li><li class=" odd"><span class=""></span><span class="me0">curl_setopt</span><span class="br0">(</span><span class="kw3">$ch</span><span class="">, </span><span class="kw4">CURLOPT_POSTFIELDS</span><span class="">, </span><span class="kw3">$jsonData</span><span class="br0">)</span><span class="">;</span></li><li class=" even"><span class=""></span><span class="me0">curl_setopt</span><span class="br0">(</span><span class="kw3">$ch</span><span class="">, </span><span class="kw4">CURLOPT_HTTPHEADER</span><span class="">, </span><span class="me0">array</span><span class="br0">(</span><span class="st1">'Content-Type: application/json'</span><span class="br0">)</span><span class="br0">)</span><span class="">;</span></li><li class=" odd"><span class=""></span><span class="kw3">$result</span><span class=""> </span><span class="sy0">=</span><span class=""> </span><span class="me0">curl_exec</span><span class="br0">(</span><span class="kw3">$ch</span><span class="br0">)</span><span class="">;</span></li><li class=" even"><span class=""></span><span class="me0">curl_close</span><span class="br0">(</span><span class="kw3">$ch</span><span class="br0">)</span><span class="">;</span></li><li class=" odd"><span class=""></span></li><li class=" even"><span class=""></span><span class="de2">?&gt;</span></li></ol><pre style="display: none;">&lt;?php
+?>
+	
+```
+</pre>
+
+<div class="EnlighterJSWrapper enlighterEnlighterJSWrapper"><ol class="hoverEnabled enlighterEnlighterJS EnlighterJS"><li class=" odd"><span class="de1">&lt;?php</span><span class=""></span></li><li class=" even"><span class=""></span></li><li class=" odd"><span class=""></span><span class="kw3">$url</span><span class=""> </span><span class="sy0">=</span><span class=""> </span><span class="st1">'https://chatapi.viber.com/pa/set_webhook'</span><span class="">;</span></li><li class=" even"><span class=""></span></li><li class=" odd"><span class=""></span><span class="kw3">$jsonData</span><span class="sy0">=</span><span class="st1">'{ "auth_token": "your_auth_token", "url": "https://yoursite.com/webhook_page" }'</span><span class="">;</span></li><li class=" even"><span class=""></span></li><li class=" odd"><span class=""></span><span class="kw3">$ch</span><span class=""> </span><span class="sy0">=</span><span class=""> </span><span class="me0">curl_init</span><span class="br0">(</span><span class="kw3">$url</span><span class="br0">)</span><span class="">;</span></li><li class=" even"><span class=""></span><span class="me0">curl_setopt</span><span class="br0">(</span><span class="kw3">$ch</span><span class="">, </span><span class="kw4">CURLOPT_POST</span><span class="">, </span><span class="nu0">1</span><span class="br0">)</span><span class="">;</span></li><li class=" odd"><span class=""></span><span class="me0">curl_setopt</span><span class="br0">(</span><span class="kw3">$ch</span><span class="">, </span><span class="kw4">CURLOPT_POSTFIELDS</span><span class="">, </span><span class="kw3">$jsonData</span><span class="br0">)</span><span class="">;</span></li><li class=" even"><span class=""></span><span class="me0">curl_setopt</span><span class="br0">(</span><span class="kw3">$ch</span><span class="">, </span><span class="kw4">CURLOPT_HTTPHEADER</span><span class="">, </span><span class="me0">array</span><span class="br0">(</span><span class="st1">'Content-Type: application/json'</span><span class="br0">)</span><span class="br0">)</span><span class="">;</span></li><li class=" odd"><span class=""></span><span class="kw3">$result</span><span class=""> </span><span class="sy0">=</span><span class=""> </span><span class="me0">curl_exec</span><span class="br0">(</span><span class="kw3">$ch</span><span class="br0">)</span><span class="">;</span></li><li class=" even"><span class=""></span><span class="me0">curl_close</span><span class="br0">(</span><span class="kw3">$ch</span><span class="br0">)</span><span class="">;</span></li><li class=" odd"><span class=""></span></li><li class=" even"><span class=""></span><span class="de2">?&gt;</span></li></ol><pre style="display: none;">&lt;?php
 
 $url = 'https://chatapi.viber.com/pa/set_webhook';
 
